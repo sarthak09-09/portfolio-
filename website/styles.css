@@ -1,0 +1,340 @@
+#header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    margin-top: 55px;
+}
+
+#eye-container {
+    margin-right: 20px;
+    
+    cursor: pointer;
+    position: fixed;
+}
+
+#eye {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transition: width 0.3s, height 0.3s;
+}
+
+#ball {
+    width: 140px !important;
+    height: 140px !important;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 3px);
+    transform: translate(-50%, -50%);
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+#pupil {
+    width: 40px !important;
+    height: 40px !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+#lamp-container {
+    margin-left: 20px;
+    z-index: 1;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+}
+
+#lamp {
+    height: 80vh;
+    width: auto;
+    display: block;
+    transform-origin: top center;
+}
+
+.additional-text {
+    position: absolute;
+    left: 150px;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.additional-text p {
+    margin-bottom: 20px;
+}
+
+/* Base styles */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Reset styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #f0f0f0;
+    cursor: none !important;
+    min-height: calc(1447px + 100vh);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Cursor styles */
+*, *::before, *::after,
+a, button, input, select, textarea,
+.header, .nav-links, .about-link,
+.dropdown-menu, .menu-items, .menu-items a {
+    cursor: none !important;
+}
+
+#custom-cursor {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(0, 0);
+    display: block;
+    object-fit: contain;
+    background-color: transparent;
+    cursor: url('./feather-large.png'), auto;
+}
+
+/* Menu Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.overlay.active {
+    left: 0;
+}
+
+.menu-content {
+    position: relative;
+    top: 50%;
+    transform: translateY(100%);
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.overlay.active .menu-content {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-content li {
+    margin: 20px 0;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.menu-content li:nth-child(1) { animation-delay: 0s; }
+.menu-content li:nth-child(2) { animation-delay: 0.2s; }
+.menu-content li:nth-child(3) { animation-delay: 0.4s; }
+.menu-content li:nth-child(4) { animation-delay: 0.6s; }
+.menu-content li:nth-child(5) { animation-delay: 0.8s; }
+
+.menu-content a {
+    color: rgb(230, 237, 198);
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background: transparent;
+}
+
+.menu-content a:hover {
+    transform: translateX(10px);
+    color: white;
+    font-size: 32px;
+}
+
+/* Animations */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes dropLamp {
+    from { transform: translateY(-100vh); }
+    to { transform: translateY(0); }
+}
+
+@keyframes swingLamp {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.content-images {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: 100vh;
+    gap: 50px;
+    padding: 0 50px;
+}
+
+.image-container {
+    flex: 0 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-img {
+    transform: scale(0.7);
+    height: auto;
+    object-fit: contain;
+}
+
+.content-img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Background container */
+.background-container {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    overflow: visible;
+}
+
+/* Page 1 - scaled down */
+.page1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0.67);
+    width: 1920px;
+    height: 2160px;
+    max-width: none;
+    max-height: none;
+    object-fit: none;
+    z-index: -1;
+    pointer-events: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    transform-origin: top center;
+}
+
+/* Page 2 - positioned directly below scaled page1 */
+.page2 {
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: absolute;
+    top: 1447px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+}
+
+
+h1{font-size: 4 rem;
+font-weight: 900;
+text-align: center; 
+margin-top: 200px;}
+
+p {
+    width: 50%;
+    margin: 4 rem 0;
+    text-align: left;
+}
+
+section {
+height: 100vh;
+}
+.container {
+    padding: 5rem;
+}
+
+.sticky_parent {
+    height: 330vh;
+   
+
+}
+
+.sticky{
+overflow: hidden;
+position: sticky;
+top: 150px;
+height: 100vh;
+border: 1px solid red;
+
+.scroll_section {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 300vw;
+    will-change: transform;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 5vw;
+}
+
+
+img{
+    width: 400px;
+    height: 80%;
+    object-fit: cover;
+    object-position: top;
+    transform: scale(0.8);
+}
+
+ 
