@@ -7,7 +7,11 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: transparent;
+    background: url('./header.png');
+    background-size: 100% auto;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     margin-top: 55px;
 }
 
@@ -255,18 +259,17 @@ a, button, input, select, textarea,
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) scale(0.67);
-    width: 1920px;
-    height: 2160px;
-    max-width: none;
-    max-height: none;
-    object-fit: none;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 1920/2160;
+    max-width: 1920px;
+    object-fit: contain;
     z-index: -1;
     pointer-events: none;
     display: block;
     margin: 0;
     padding: 0;
-    zoom: 1;
     transform-origin: top center;
 }
 
@@ -277,7 +280,7 @@ a, button, input, select, textarea,
     background-repeat: no-repeat;
     background-position: center top;
     position: absolute;
-    top: 1447px;
+    top: 1440px;
     left: 0;
     width: 100%;
     height: 100vh;
@@ -314,7 +317,7 @@ overflow: hidden;
 position: sticky;
 top: 150px;
 height: 100vh;
-border: 1px solid red;
+
 
 .scroll_section {
     position: absolute;
