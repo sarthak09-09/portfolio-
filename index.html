@@ -9,6 +9,10 @@
 
 
     <link rel="stylesheet" href="styles.css">
+   
+    
+    
+    
 </head>
 <body>
 
@@ -91,6 +95,31 @@
 <img id="custom-cursor" src="./feather.png" alt="Feather cursor">
 
 <script src="script.js"></script>
+
+<script>
+    function checkDeviceAndRedirect() {
+        // Check for mobile/tablet devices using user agent
+        const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Check screen width (800px breakpoint)
+        const isSmallScreen = window.innerWidth <= 800;
+
+        // Get current page
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if ((isMobile || isSmallScreen) && currentPage !== 'mobile.html') {
+            window.location.href = 'mobile.html';
+        } else if ((!isMobile && !isSmallScreen) && currentPage === 'mobile.html') {
+            window.location.href = 'index.html';
+        }
+    }
+
+    // Check on page load
+    checkDeviceAndRedirect();
+
+    // Check when window is resized
+    window.addEventListener('resize', checkDeviceAndRedirect);
+</script>
 
 </body>
 </html> 
